@@ -1,6 +1,6 @@
 .venv/
 __pycache__/
-**/.*cache/
+.*cache/
 .output/
 *.pyspy
 *.pickle

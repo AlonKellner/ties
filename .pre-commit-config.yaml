@@ -11,7 +11,7 @@ repos:
       - id: detect-private-key
       - id: end-of-file-fixer
       - id: trailing-whitespace
-        args: ["--markdown-linebreak-ext=md"]
+        args: ["--markdown-linebreak-ext=md,mdc"]
       - id: check-added-large-files
         args: ["--maxkb=2000"]
   - repo: https://github.com/google/yamlfmt
@@ -26,12 +26,12 @@ repos:
         name: biomejs (.json, .js, .ts)
   - repo: local
     hooks:
-      # - id: ties
-      #   name: ties (selected files)
-      #   description: synchronize chosen file contents
-      #   entry: uvx --from 'ties[yaml]' ties fix
-      #   language: system
-      #   pass_filenames: false
+      - id: ties
+        name: ties (selected files)
+        description: synchronize chosen file contents
+        entry: uvx --from 'ties[yaml]' ties fix
+        language: system
+        pass_filenames: false
       - id: taplo-format
         name: taplo format (.toml)
         description: apply a consistent format to `*.toml` files

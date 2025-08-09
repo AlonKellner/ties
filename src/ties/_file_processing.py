@@ -48,10 +48,9 @@ def get_source_content(group_config: dict, script_dir: Path) -> bytes:
         try:
             # Validate all sources are text files for transforms
             for src_path in source_paths:
-                mime_type, _ = mimetypes.guess_type(src_path)
-                if not mime_type or not mime_type.startswith("text/"):
+                if not is_text_file(src_path):
                     raise TypeError(
-                        f"Source file for transform must be a text file: {src_path} (MIME: {mime_type})"
+                        f"Source file for transform must be a text file: {src_path}"
                     )
 
             module_path_str, func_name = module_spec.split(":")
@@ -84,10 +83,9 @@ def get_source_content(group_config: dict, script_dir: Path) -> bytes:
     cprint(f"  -> Concatenating {len(source_paths)} sources...", Colors.BLUE)
     final_content = bytearray()
     for src_path in source_paths:
-        mime_type, _ = mimetypes.guess_type(src_path)
-        if not mime_type or not mime_type.startswith("text/"):
+        if not is_text_file(src_path):
             raise TypeError(
-                f"Source file for concatenation is not a text file: {src_path} (MIME: {mime_type})"
+                f"Source file for concatenation is not a text file: {src_path}"
             )
         final_content.extend(src_path.read_bytes())
         final_content.extend(b"\n")  # Add a newline between concatenated files
@@ -193,3 +191,18 @@ def final_summary(mode: str, discrepancies: int, fixed_count: int, errors: int) 
         )
 
     return errors == 0
+
+
+def is_text_file(file_path: Path) -> bool:
+    """Check if a file is likely a text file using the mimetypes module."""
+    mime_type, _ = mimetypes.guess_type(file_path)
+
+    if mime_type:
+        return mime_type.startswith("text/")
+
+    try:
+        with open(file_path, encoding="utf-8") as f:
+            f.read(1024)
+        return True
+    except (OSError, UnicodeDecodeError):
+        return False

@@ -16,7 +16,7 @@ def load_config() -> dict:
             config_path = directory / config_file_name
             if config_path.is_file():
                 try:
-                    with open(config_path, "rb") as f:
+                    with open(config_path) as f:
                         config_data = toml.load(f)
 
                     if config_file_name == "pyproject.toml":

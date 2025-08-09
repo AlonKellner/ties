@@ -92,6 +92,7 @@ package = true
 python-preference = "only-managed"
 link-mode = "copy"
 
+[tool.ties]
 [[tool.ties.tie]]
 name = ".gitignore -> trivy.yaml"
 source = ".gitignore"

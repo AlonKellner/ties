@@ -2,7 +2,6 @@
 
 import hashlib
 import importlib
-import mimetypes
 import sys
 from pathlib import Path
 from typing import Any
@@ -194,12 +193,7 @@ def final_summary(mode: str, discrepancies: int, fixed_count: int, errors: int) 
 
 
 def is_text_file(file_path: Path) -> bool:
-    """Check if a file is likely a text file using the mimetypes module."""
-    mime_type, _ = mimetypes.guess_type(file_path)
-
-    if mime_type:
-        return mime_type.startswith("text/")
-
+    """Check if a file is likely a text file."""
     try:
         with open(file_path, encoding="utf-8") as f:
             f.read(1024)

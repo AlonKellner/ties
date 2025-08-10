@@ -10,5 +10,6 @@ fs:
   skip-files:
     - '**/*.pickle'
     - '**/*.pyspy'
+    - '**/*mcp.json'
     - '**/.env*'
     - '**/src/_version.py'

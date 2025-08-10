@@ -1,1 +1,27 @@
-{}
+{
+	"mcpServers": {
+		"github": {
+			"type": "http",
+			"url": "https://api.githubcopilot.com/mcp/",
+			"headers": {
+				"Authorization": "Bearer ${env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+			}
+		},
+		"repomix": {
+			"command": "uvx",
+			"args": ["repomix", "--mcp"],
+			"cwd": "/workspaces/lintok"
+		},
+		"language-server": {
+			"command": "mcp-language-server",
+			"args": [
+				"--workspace",
+				"/workspaces/lintok",
+				"--lsp",
+				"pyright-langserver",
+				"--",
+				"--stdio"
+			]
+		}
+	}
+}

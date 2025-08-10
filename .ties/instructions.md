@@ -1,7 +1,3 @@
----
-applyTo: '**'
----
-
 # Instructions
 
 ## General Information

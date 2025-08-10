@@ -114,4 +114,14 @@ transforms = [ "ties:embed_environ", "transform:vscode_mcp_json" ]
 [[tool.ties.tie]]
 name = "Agent Instructions"
 source = ".ties/instructions.md"
-targets = [ "CLAUDE.md", ".cursor/rules/instructions.mdc", ".github/copilot-instructions.md" ]
+target = "CLAUDE.md"
+
+[[tool.ties.tie]]
+name = "Cursor Rules"
+sources = [ ".ties/vscode_header.txt", ".ties/instructions.md" ]
+target = ".github/copilot-instructions.md"
+
+[[tool.ties.tie]]
+name = "Cursor Rules"
+sources = [ ".ties/cursor_header.txt", ".ties/instructions.md" ]
+target = ".cursor/rules/instructions.mdc"

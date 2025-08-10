@@ -81,13 +81,14 @@ def get_source_content(group_config: dict, script_dir: Path) -> bytes:
     # --- Concatenation Logic ---
     cprint(f"  -> Concatenating {len(source_paths)} sources...", Colors.BLUE)
     final_content = bytearray()
-    for src_path in source_paths:
+    for i, src_path in enumerate(source_paths):
         if not is_text_file(src_path):
             raise TypeError(
                 f"Source file for concatenation is not a text file: {src_path}"
             )
         final_content.extend(src_path.read_bytes())
-        final_content.extend(b"\n")  # Add a newline between concatenated files
+        if i < len(source_paths) - 1:
+            final_content.extend(b"\n")  # Add a newline between concatenated files
 
     return bytes(final_content)
 

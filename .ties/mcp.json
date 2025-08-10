@@ -10,13 +10,13 @@
 		"repomix": {
 			"command": "uvx",
 			"args": ["repomix", "--mcp"],
-			"cwd": "/workspaces/lintok"
+			"cwd": "/workspaces/ties"
 		},
 		"language-server": {
 			"command": "mcp-language-server",
 			"args": [
 				"--workspace",
-				"/workspaces/lintok",
+				"/workspaces/ties",
 				"--lsp",
 				"pyright-langserver",
 				"--",

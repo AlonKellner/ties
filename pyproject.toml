@@ -103,7 +103,7 @@ transform = "transform:trivy_yaml"
 name = "mcp.json"
 source = ".ties/mcp.json"
 targets = [ ".mcp.json", ".cursor/mcp.json", ".vscode/mcp.json" ]
-# transform = "ties:embed_environ"
+transform = "ties:embed_environ"
 
 [[tool.ties.tie]]
 name = "Agent Instructions"

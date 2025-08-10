@@ -10,8 +10,8 @@
 			}
 		},
 		"repomix": {
-			"command": "uvx",
-			"args": ["repomix", "--mcp"],
+			"command": "repomix",
+			"args": ["--mcp"],
 			"cwd": "/workspaces/ties"
 		},
 		"language-server": {

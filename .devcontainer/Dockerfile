@@ -26,7 +26,8 @@ RUN --mount=type=cache,dst=/root/.cache/ \
     curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     echo nodejs && apt-get install -y --no-install-recommends nodejs && npm install -g npm@latest && node -v && npm -v && \
     echo claude && npm install -g @anthropic-ai/claude-code && claude --version && \
-    echo pyright && npm install -g pyright && pyright --version
+    echo pyright && npm install -g pyright && pyright --version && \
+    echo repomix && npm install -g repomix && repomix --version
 
 COPY ./.devcontainer/migrate_claude.exp ./
 USER vscode

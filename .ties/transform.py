@@ -31,3 +31,8 @@ def trivy_yaml(gitignore: str) -> str:
         Dumper=IndentedDumper,
         default_flow_style=False,
     )
+
+
+def vscode_mcp_json(mcp_json: str) -> str:
+    """Transform the generic mcp json to the vscode format."""
+    return mcp_json.replace('"mcpServers":', '"servers":')

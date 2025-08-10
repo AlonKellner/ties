@@ -31,48 +31,48 @@ def get_source_content(group_config: dict, script_dir: Path) -> bytes:
     or a custom transform function.
     """
     # Normalize 'source'/'sources' to a list
-    if "source" in group_config:
-        sources = [group_config["source"]]
-    elif "sources" in group_config:
-        sources = group_config["sources"]
-    else:
-        raise ValueError("Each 'tie' group must contain a 'source' or 'sources' key.")
-
+    sources = _resolve_sources(group_config)
     source_paths = [Path(s) for s in sources]
 
     # --- Custom Transform Logic ---
-    if "transform" in group_config:
-        cprint(f"  -> Using custom transform: {group_config['transform']}", Colors.BLUE)
-        module_spec = group_config["transform"]
-        try:
-            # Validate all sources are text files for transforms
-            for src_path in source_paths:
-                if not is_text_file(src_path):
-                    raise TypeError(
-                        f"Source file for transform must be a text file: {src_path}"
-                    )
+    transforms = _resolve_transforms(group_config)
+    if len(transforms) > 0:
+        # Validate all sources are text files for transforms
+        for src_path in source_paths:
+            if not is_text_file(src_path):
+                raise TypeError(
+                    f"Source file for transform must be a text file: {src_path}"
+                )
 
-            module_path_str, func_name = module_spec.split(":")
+        source_contents = [p.read_text(encoding="utf-8") for p in source_paths]
+        for transform in transforms:
+            cprint(f"  -> Using custom transform: {transform}", Colors.BLUE)
+            module_spec = transform
+            try:
+                module_path_str, func_name = module_spec.split(":")
 
-            # Add the script directory to the path for importing
-            sys.path.insert(0, str(script_dir.resolve()))
+                # Add the script directory to the path for importing
+                sys.path.insert(0, str(script_dir.resolve()))
 
-            module = importlib.import_module(module_path_str)
-            transform_func = getattr(module, func_name)
+                module = importlib.import_module(module_path_str)
+                transform_func = getattr(module, func_name)
 
-            # Restore sys.path
-            sys.path.pop(0)
+                # Restore sys.path
+                sys.path.pop(0)
 
-            source_contents = [p.read_text(encoding="utf-8") for p in source_paths]
-            result = transform_func(*source_contents)
-            return result.encode("utf-8")
+                result = transform_func(*source_contents)
+                source_contents = [result]
 
-        except (ValueError, ImportError, AttributeError, FileNotFoundError) as e:
-            raise RuntimeError(
-                f"Failed to load transform '{module_spec}' from '{script_dir}': {e}"
-            ) from e
-        except Exception as e:
-            raise RuntimeError(f"Error executing transform '{module_spec}': {e}") from e
+            except (ValueError, ImportError, AttributeError, FileNotFoundError) as e:
+                raise RuntimeError(
+                    f"Failed to load transform '{module_spec}' from '{script_dir}': {e}"
+                ) from e
+            except Exception as e:
+                raise RuntimeError(
+                    f"Error executing transform '{module_spec}': {e}"
+                ) from e
+
+        return result.encode("utf-8")
 
     # --- Single Source Logic ---
     if len(source_paths) == 1:
@@ -90,6 +90,26 @@ def get_source_content(group_config: dict, script_dir: Path) -> bytes:
         final_content.extend(b"\n")  # Add a newline between concatenated files
 
     return bytes(final_content)
+
+
+def _resolve_sources(group_config: dict[str, Any]) -> list[str]:
+    if "source" in group_config:
+        sources = [group_config["source"]]
+    elif "sources" in group_config:
+        sources = group_config["sources"]
+    else:
+        raise ValueError("Each 'tie' group must contain a 'source' or 'sources' key.")
+    return sources
+
+
+def _resolve_transforms(group_config: dict[str, Any]) -> list[str]:
+    if "transform" in group_config:
+        transforms = [group_config["transform"]]
+    elif "transforms" in group_config:
+        transforms = group_config["transforms"]
+    else:
+        transforms = []
+    return transforms
 
 
 def process_files(config: dict, mode: str) -> bool:

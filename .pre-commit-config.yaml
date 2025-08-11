@@ -129,7 +129,7 @@ repos:
       - id: tox
         name: tox (tests)
         description: run tox to check the project in different environments
-        entry: tox
+        entry: tox --parallel
         language: system
         pass_filenames: false
       - id: trivy

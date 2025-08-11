@@ -37,7 +37,7 @@ urls = { Homepage = "https://github.com/AlonKellner/ties.git", Repository = "htt
 scripts.ties = "ties.cli:main"
 
 [dependency-groups]
-dev = [ "pytest", "pyyaml" ]
+dev = [ "pytest", "pytest-cov", "pyyaml" ]
 
 [tool.hatch.envs.default]
 installer = "uv"
@@ -79,6 +79,28 @@ lint.pylint.max-args = 10
 
 [tool.pytest.ini_options]
 pythonpath = "./"
+
+[tool.tox]
+env_list = [ "py310", "py311", "py312", "py313" ]
+
+[tool.tox.env_run_base]
+runner = "uv-venv-lock-runner"
+description = "Run test under {base_python}"
+skip_install = true
+commands = [ [ "pytest", "tests" ] ]
+[tool.tox.env.py313]
+commands = [
+  [
+    "pytest",
+    "tests",
+    "--cov",
+    "--cov-append",
+    "--cov-report=term-missing",
+    "--cov-report=lcov:lcov.info",
+    "--cov=src/ties",
+    "--cov-fail-under=30",
+  ],
+]
 
 [tool.lintok]
 max_tokens = 2048

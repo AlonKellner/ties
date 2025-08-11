@@ -11,5 +11,6 @@ fs:
     - '**/*.pickle'
     - '**/*.pyspy'
     - '**/*mcp.json'
+    - '**/.coverage'
     - '**/.env*'
     - '**/src/_version.py'

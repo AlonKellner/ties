@@ -6,10 +6,10 @@ applyTo: "**"
 
 ## General Information
 
-This python (3.13) repo uses the astral.sh stack along other tools:
+This python (3.13) repo uses the astral.sh stack along other CLIs:
 1. `devcontainer` - environment isolation
-2. `pre-commit` - triggers all of the following tools
-3. `uv` - venv and tools management
+2. `pre-commit` - triggers all of the following CLIs
+3. `uv` - venv and CLIs management
 4. `ruff` - format and lint
 5. `ty` - type checking
 6. `pytest` - testing
@@ -35,14 +35,28 @@ Commit messages must follow the pattern
 where the `<type>` is `feat` or `fix`, the `<sentence>` is no more than 60
 characters and the `<details>` are optional.  
 
+## Pre-Commit
+
+`pre-commit` is configured to run all CLIs.  
+To run, simply:
+
+```shell
+pre-commit
+```
+
+With no additional options.  
+Before editing anything, **ALWAYS** start with `pre-commit`.  
+**NEVER** run a CLI directly before `pre-commit` first.  
+Running a CLI directly is a last resort.  
+
 ## Edit Attempts
 
 Each sequence of edits and code generation without
-`pre-commit run` is an Edit Attempt.  
+`pre-commit` is an Edit Attempt.  
 Edit Attempts should be atomic, focused and encapsulated.  
 After any Edit Attempt:  
 - `git add` all changes
-- `pre-commit run`
+- `pre-commit`
 - a summary line: `Attempt #<attempt index>: <status>`  
   where `<status>` is `SUCCESS` or `FAILED`
 

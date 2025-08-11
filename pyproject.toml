@@ -81,14 +81,16 @@ lint.pylint.max-args = 10
 pythonpath = "./"
 
 [tool.tox]
-env_list = [ "py310", "py311", "py312", "py313" ]
+env_list = [ "py310", "py311", "py312", "py313", "coverage" ]
 
 [tool.tox.env_run_base]
 runner = "uv-venv-lock-runner"
 description = "Run test under {base_python}"
 skip_install = true
 commands = [ [ "pytest", "tests" ] ]
-[tool.tox.env.py313]
+
+[tool.tox.env.coverage]
+base_python = [ "py313" ]
 commands = [
   [
     "pytest",
@@ -98,7 +100,7 @@ commands = [
     "--cov-report=term-missing",
     "--cov-report=lcov:lcov.info",
     "--cov=src/ties",
-    "--cov-fail-under=30",
+    "--cov-fail-under=95",
   ],
 ]
 

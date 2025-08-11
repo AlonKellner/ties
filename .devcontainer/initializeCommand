@@ -7,6 +7,8 @@ mkdir -p $2/.cache/trivy
 mkdir -p $2/.cursor
 mkdir -p $2/.ssh
 mkdir -p $2/.vscode-server
+mkdir -p $2/.config/gcloud
+mkdir -p $2/.aws
 touch $2/.gitconfig
 touch ./.devcontainer/.env
 touch ./.env

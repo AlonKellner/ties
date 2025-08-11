@@ -5,6 +5,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Linting: Ruff](https://img.shields.io/badge/ruff-enabled-yellow?style=flat&labelColor=000000&logo=ruff)](https://github.com/astral-sh/ruff)
 [![Code style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/AlonKellner/ties)
+![Cursor](https://img.shields.io/static/v1?label=-&message=Cursor&color=black)
+![Claude Code](https://img.shields.io/static/v1?label=-&message=Claude%20Code&color=d77253)
 
 A powerful CLI tool to duplicate and sync file content with advanced
 transformations. Keep your repository files in sync automatically with
@@ -100,8 +103,12 @@ We welcome contributions! Please see our
 
 #### Steps
 
+Either click the badge (VSCode only)  
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/AlonKellner/ties)  
+or (Cursor/VSCode)
+
 1. `git clone https://github.com/AlonKellner/ties.git`
-2. Open the repository using VSCode/Cursor
+2. Open the repository in your IDE of choice
 3. `cmd+shift+p`/`ctrl+shift+p`
 4. Type "reopen"
 5. Choose "Dev Containers: Reopen in Container"

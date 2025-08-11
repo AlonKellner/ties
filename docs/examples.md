@@ -67,13 +67,13 @@ Template file (`.env.template`):
 
 ```bash
 # Database Configuration
-DB_HOST={{DB_HOST}}
-DB_PORT={{DB_PORT}}
-DB_NAME={{DB_NAME}}
+DB_HOST=${env:DB_HOST}
+DB_PORT=${env:DB_PORT}
+DB_NAME=${env:DB_NAME}
 
 # API Configuration
-API_KEY={{API_KEY}}
-API_URL={{API_URL}}
+API_KEY=${env:API_KEY}
+API_URL=${env:API_URL}
 ```
 
 ### Example 5: Documentation Synchronization
@@ -113,6 +113,9 @@ targets = [
 ]
 transform = "ties:embed_environ"
 ```
+
+**Note**: The `transform:trivy_yaml` and `transform:vscode_mcp_json` transforms
+require a local `transform.py` file in your `.ties/` directory.
 
 ## 🏗️ Real-World Scenarios
 

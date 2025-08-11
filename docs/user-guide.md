@@ -72,8 +72,6 @@ transform = "transform:markdown_cleanup"
 
 ## 🔧 Configuration Options
 
-### Tie Configuration
-
 Each tie has the following options:
 
 - **`name`** (required): A descriptive name for the tie
@@ -85,7 +83,9 @@ Each tie has the following options:
 
 - **`ties:embed_environ`**: Embeds environment variables in target files
 - **`transform:trivy_yaml`**: Converts gitignore to Trivy YAML format
+  (requires local transform.py)
 - **`transform:vscode_mcp_json`**: Formats MCP JSON for VS Code
+  (requires local transform.py)
 
 ## 📖 Usage
 
@@ -105,11 +105,11 @@ ties fix
 # Show help
 ties --help
 
-# Check specific configuration file
-ties check --config custom-config.toml
+# Check for discrepancies without making changes
+ties check
 
-# Verbose output
-ties check --verbose
+# Fix discrepancies automatically
+ties fix
 ```
 
 ## 🔄 Workflow Integration
@@ -164,7 +164,7 @@ target = ".env"
 transform = "ties:embed_environ"
 ```
 
-This will replace `{{ENV_VAR}}` placeholders in your template with actual
+This will replace `${env:ENV_VAR}` placeholders in your template with actual
 environment variable values.
 
 ### Custom Transformations

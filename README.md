@@ -3,9 +3,8 @@
 [![PyPI version](https://badge.fury.io/py/ties.svg)](https://badge.fury.io/py/ties)
 [![Python versions](https://img.shields.io/pypi/pyversions/ties.svg)](https://pypi.org/project/ties/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![Linting: Ruff](https://img.shields.io/badge/ruff-enabled-yellow?style=flat&labelColor=000000&logo=ruff)](https://github.com/astral-sh/ruff)
+[![Code style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
 A powerful CLI tool to duplicate and sync file content with advanced
 transformations. Keep your repository files in sync automatically with
@@ -125,7 +124,7 @@ This project is licensed under the MIT License - see the
 
 ## 📊 Project Status
 
-- **Development Status**: Alpha (3)
+- **Development Status**: Alpha
 - **Python Support**: 3.10+
 - **License**: MIT
 - **Maintainer**: [Alon Kellner](mailto:me@alonkellner.com)

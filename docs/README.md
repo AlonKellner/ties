@@ -7,23 +7,19 @@ use Ties effectively.
 
 ### 🚀 Getting Started
 - **[User Guide](user-guide.md)** - Complete guide to using Ties
-- **[Installation](installation.md)** - How to install and set up Ties
-- **[Quick Start](quick-start.md)** - Get up and running in minutes
+- **[Examples](examples.md)** - Common configuration patterns and use cases
 
 ### ⚙️ Configuration
-- **[Configuration Reference](configuration.md)** - All configuration options
+- **[User Guide](user-guide.md)** - Configuration options and examples
 - **[Examples](examples.md)** - Common configuration patterns
-- **[Best Practices](best-practices.md)** - Recommended approaches
 
 ### 🔧 Advanced Topics
-- **[Transformations](transformations.md)** - Available transformation functions
-- **[Pre-commit Integration](pre-commit.md)** - Using Ties with pre-commit
-- **[CI/CD Integration](ci-cd.md)** - Using Ties in automated workflows
+- **[User Guide](user-guide.md)** - Available transformation functions
+- **[Examples](examples.md)** - Advanced use cases and workflows
 
 ### 🧪 Development
 - **[Contributing](../CONTRIBUTING.md)** - How to contribute to Ties
-- **[Development Setup](development.md)** - Setting up a development environment
-- **[Testing](testing.md)** - Running tests and writing new ones
+- **[Development Setup](../README.md#development-setup)** - Setting up a development environment
 
 ## 🎯 What is Ties?
 
@@ -41,6 +37,8 @@ repository with advanced transformations. It's designed to:
 - **[PyPI Package](https://pypi.org/project/ties/)**
 - **[Issue Tracker](https://github.com/AlonKellner/ties/issues)**
 - **[Contributing Guide](../CONTRIBUTING.md)**
+- **[User Guide](user-guide.md)**
+- **[Examples](examples.md)**
 
 ## 📖 Example Usage
 

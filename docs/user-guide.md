@@ -194,14 +194,6 @@ def custom_transform(content: str, **kwargs) -> str:
    - Verify transform function names are correct
    - Check transform function dependencies
 
-### Debug Mode
-
-Enable verbose output for debugging:
-
-```bash
-ties check --verbose
-```
-
 ## 📚 Examples
 
 ### Example 1: Sync Configuration Files

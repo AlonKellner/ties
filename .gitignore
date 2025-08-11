@@ -11,3 +11,4 @@ node_modules/
 src/_version.py
 *mcp.json
 .coverage
+htmlcov/

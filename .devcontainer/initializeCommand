@@ -8,3 +8,5 @@ mkdir -p $2/.cursor
 mkdir -p $2/.ssh
 mkdir -p $2/.vscode-server
 touch $2/.gitconfig
+touch ./.devcontainer/.env
+touch ./.env

@@ -95,24 +95,22 @@ We welcome contributions! Please see our
 
 ### Development Setup
 
-```bash
-# Clone the repository
-git clone https://github.com/AlonKellner/ties.git
-cd ties
+#### Prerequisites
+- [Docker](https://www.docker.com/get-started/)
+- [VSCode](https://code.visualstudio.com/download)/[Cursor](https://cursor.com/downloads) (or any IDE with [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers) support)
 
-# Create virtual environment
-uv venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+#### Steps
 
-# Install dependencies
-uv pip install -e ".[dev]"
+1. `git clone https://github.com/AlonKellner/ties.git`
+2. Open the repository using VSCode/Cursor
+3. `cmd+shift+p`/`ctrl+shift+p`
+4. Type "reopen"
+5. Choose "Dev Containers: Reopen in Container"
 
-# Install pre-commit hooks
-pre-commit install
-
-# Run tests
-pytest
-```
+This will automatically:
+1. Build and start a devcontainer with binary requirements
+2. Install the `pre-commit` hooks
+3. Use `uv` to install python and all python dependencies into a local `.venv`
 
 ## 📝 License
 

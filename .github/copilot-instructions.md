@@ -7,24 +7,25 @@ applyTo: "**"
 ## General Information
 
 This python (3.13) repo uses the astral.sh stack along other tools:
-1. `pre-commit` - triggers all of the following tools
-2. `uv` - venv and tools management
-3. `ruff` - format and lint
-4. `ty` - type checking
-5. `pytest` - testing
-6. `tox` - tests automation
-7. `typos` - spell checking
-8. `pip-audit` - dependency security
-9. `trivy` - general security
-10. `claude` - for an objective AI review
-11. `lintok` - file size linter
-12. `ties` - file-to-file sync with transformations
-13. `yamlfmt` - yaml format and lint
-14. `biomejs` - json format and lint
-15. `rumdl` - markdown format and lint
-16. `taplo` - general toml format and lint
-17. `pyproject-fmt` - pyproject.toml format and lint
-18. `tox-toml-fmt` - tox.toml format and lint
+1. `devcontainer` - environment isolation
+2. `pre-commit` - triggers all of the following tools
+3. `uv` - venv and tools management
+4. `ruff` - format and lint
+5. `ty` - type checking
+6. `pytest` - testing
+7. `tox` - tests automation
+8. `typos` - spell checking
+9. `pip-audit` - dependency security
+10. `trivy` - general security
+11. `claude` - for an objective AI review
+12. `lintok` - file size linter
+13. `ties` - file-to-file sync with transformations
+14. `yamlfmt` - yaml format and lint
+15. `biomejs` - json format and lint
+16. `rumdl` - markdown format and lint
+17. `taplo` - general toml format and lint
+18. `pyproject-fmt` - pyproject.toml format and lint
+19. `tox-toml-fmt` - tox.toml format and lint
 
 ## Git
 

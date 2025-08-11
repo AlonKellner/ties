@@ -26,12 +26,12 @@ repos:
         name: biomejs (.json, .js, .ts)
   - repo: local
     hooks:
-      # - id: ties
-      #   name: ties (selected files)
-      #   description: synchronize chosen file contents
-      #   entry: uvx --from '.[yaml]' ties fix
-      #   language: system
-      #   pass_filenames: false
+      - id: ties
+        name: ties (selected files)
+        description: synchronize chosen file contents
+        entry: uvx --from 'ties[yaml]' ties fix
+        language: system
+        pass_filenames: false
       - id: taplo-format
         name: taplo format (.toml)
         description: apply a consistent format to `*.toml` files

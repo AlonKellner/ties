@@ -1,34 +1,39 @@
 FROM mcr.microsoft.com/devcontainers/base:debian AS default
-USER vscode
-COPY ./.devcontainer/install-go.sh ./
+COPY ./.devcontainer/install-go.sh ./.devcontainer/migrate_claude.exp dev-pyproject/ ./
 ENV GOPATH=/home/vscode/go
-ENV PATH="/home/vscode/.local/bin/:/home/vscode/.local/go/bin/:/github/home/.local/bin:/github/home/.local/go/bin:$GOPATH/bin:$PATH"
-RUN --mount=type=cache,dst=/root/.cache/ \
-    echo uv && curl -LsSf https://astral.sh/uv/install.sh | sh && \
-    chmod +x $HOME/.local/bin/uv $HOME/.local/bin/uvx && \
-    echo trivy && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b $HOME/.local/bin v0.65.0 && \
-    chmod +x $HOME/.local/bin/trivy && \
-    echo taplo && curl -fsSL https://github.com/tamasfe/taplo/releases/latest/download/taplo-linux-$(uname -m).gz \
-    | gzip -d - | install -m 755 /dev/stdin $HOME/.local/bin/taplo && \
-    echo go && ./install-go.sh
-RUN --mount=type=cache,dst=/root/.cache/ \
-    uv self update && uvx --version && trivy --version && taplo --version && go version && \
-    go install github.com/isaacphi/mcp-language-server@latest && mcp-language-server --help
+ENV PATH="/home/vscode/.local/bin/:/home/vscode/.local/go/bin/:/home/vscode/.cargo/bin:/github/home/.local/bin:/github/home/.local/go/bin:/github/home/.cargo/bin:$GOPATH/bin:$PATH"
+ENV NODE_VERSION=24.5.0
+ENV NVM_DIR="/home/vscode/.nvm"
 
 USER root
-
-COPY dev-pyproject/ ./
-RUN --mount=type=cache,dst=/root/.cache/ \
-    DEBIAN_FRONTEND=noninteractive mkdir -p /home/vscode/.cache && chmod 777 /home/vscode/.cache && \
+RUN --mount=type=cache,dst=/root/.cache/ DEBIAN_FRONTEND=noninteractive \
     echo apt-tools && apt-get update && apt-get upgrade -y --no-install-recommends && \
     apt-get install -y --no-install-recommends apt-transport-https \
-    ca-certificates gnupg curl pkg-config cmake libssl-dev git expect && \
+    ca-certificates gnupg curl pkg-config cmake libssl-dev git expect
+
+USER vscode
+RUN --mount=type=cache,dst=/home/vscode/.cache/ DEBIAN_FRONTEND=noninteractive \
+    echo nvm && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash && \
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && \. && nvm --version && \
+    echo npm && nvm install ${NODE_VERSION} && node --version && npm --version && \
+    echo uv && curl -LsSf https://astral.sh/uv/install.sh | sh && \
+    chmod +x $HOME/.local/bin/uv $HOME/.local/bin/uvx && uv self update && uvx --version && \
+    echo trivy && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b $HOME/.local/bin v0.65.0 && \
+    chmod +x $HOME/.local/bin/trivy && trivy --version && \
+    echo taplo && curl -fsSL https://github.com/tamasfe/taplo/releases/latest/download/taplo-linux-$(uname -m).gz \
+    | gzip -d - | install -m 755 /dev/stdin $HOME/.local/bin/taplo && taplo --version && \
+    echo go && ./install-go.sh && go version && \
+    echo rust && curl -sSf 'https://sh.rustup.rs' | sh -s -- -y && cargo --version && \
+    go install github.com/isaacphi/mcp-language-server@latest && mcp-language-server --help && \
+    cargo install lychee && lychee --version && \
     curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    echo nodejs && apt-get install -y --no-install-recommends nodejs && npm install -g npm@latest && node -v && npm -v && \
+    echo nodejs && npm install -g npm@latest && node -v && npm -v && \
     echo claude && npm install -g @anthropic-ai/claude-code && claude --version && \
     echo pyright && npm install -g pyright && pyright --version && \
-    echo repomix && npm install -g repomix && repomix --version
+    echo repomix && npm install -g repomix && repomix --version && \
+    expect migrate_claude.exp
 
-COPY ./.devcontainer/migrate_claude.exp ./
+USER root
+RUN mkdir -p /home/vscode/.cache && chmod 777 /home/vscode/.cache
+
 USER vscode
-RUN expect migrate_claude.exp

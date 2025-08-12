@@ -23,9 +23,10 @@ This python (3.13) repo uses the astral.sh stack along other CLIs:
 14. `yamlfmt` - yaml format and lint
 15. `biomejs` - json format and lint
 16. `rumdl` - markdown format and lint
-17. `taplo` - general toml format and lint
-18. `pyproject-fmt` - pyproject.toml format and lint
-19. `tox-toml-fmt` - tox.toml format and lint
+17. `lychee` - broken link detection
+18. `taplo` - general toml format and lint
+19. `pyproject-fmt` - pyproject.toml format and lint
+20. `tox-toml-fmt` - tox.toml format and lint
 
 ## Git
 
@@ -70,6 +71,7 @@ After any Task:
 - `git commit` your changes
 - a summary line: `<task>: <status> after <amount> attempts`  
   where `<status>` is `DONE` or `STUCK`
+- `CHANGELOG.md` update if needed
 
 ## Goals
 

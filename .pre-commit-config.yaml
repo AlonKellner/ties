@@ -64,6 +64,13 @@ repos:
         entry: uvx rumdl check --fix
         language: system
         types: [markdown]
+      - id: lychee
+        name: lychee (text files)
+        description: broken link detection
+        entry: lychee
+        language: system
+        types: [text]
+        exclude: ^.*(D|d)ockerfile$
       - id: uv-sync
         name: uv sync (.venv)
         description: synchronize the environment with the latest tools and dependencies

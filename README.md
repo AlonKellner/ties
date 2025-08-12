@@ -85,9 +85,6 @@ transform = "transform:markdown_cleanup"
 ## 📖 Documentation
 
 - [User Guide](docs/user-guide.md) - Complete usage instructions
-- [Configuration Reference](docs/configuration.md) - All configuration options
-- [Transformations](docs/transformations.md) - Available transformation
-  functions
 - [Examples](docs/examples.md) - Common use cases and examples
 
 ## 🤝 Contributing
@@ -117,6 +114,34 @@ This will automatically:
 1. Build and start a devcontainer with binary requirements
 2. Install the `pre-commit` hooks
 3. Use `uv` to install python and all python dependencies into a local `.venv`
+4. Install a few MCP servers
+
+#### MCP
+
+The current MCP servers that this repo supports are:
+1. [`github-mcp-server`](https://github.com/github/github-mcp-server) (Remote)
+2. [`repomix`](https://github.com/yamadashy/repomix) (Local)
+3. [`mcp-language-server`](https://github.com/isaacphi/mcp-language-server)
+
+To configure the remote `github-mcp-server`,
+[create a personal access token](https://github.com/settings/personal-access-tokens)
+and add it in the `.devcontainer/.env` file:
+
+```sh
+GITHUB_PERSONAL_ACCESS_TOKEN=<your_personal_access_token_here>
+```
+
+It should look something like `github_pat_blablabla...blabla`.
+
+#### [Claude Code](https://www.anthropic.com/claude-code)
+
+The `pre-commit` setup in this repo uses `claude` code to
+automatically review changes.  
+By default, `claude` will not be configured and will automatically
+pass in the `pre-commit`.  
+
+If you want to use `claude` to review changes, you can read about
+[Claude Code Deployment](https://docs.anthropic.com/en/docs/claude-code/third-party-integrations).
 
 ## 📝 License
 

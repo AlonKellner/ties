@@ -6,16 +6,17 @@ ENV NODE_VERSION=24.5.0
 ENV NVM_DIR="/home/vscode/.nvm"
 
 USER root
-RUN --mount=type=cache,dst=/root/.cache/ DEBIAN_FRONTEND=noninteractive \
+RUN --mount=type=cache,dst=/root/.cache/ --mount=type=cache,dst=/home/vscode/.cache/ DEBIAN_FRONTEND=noninteractive \
+    mkdir -p /home/vscode/.cache && chown -R vscode:vscode /home/vscode/.cache && \
     echo apt-tools && apt-get update && apt-get upgrade -y --no-install-recommends && \
     apt-get install -y --no-install-recommends apt-transport-https \
     ca-certificates gnupg curl pkg-config cmake libssl-dev git expect
 
+RUN mkdir -p /home/vscode/.cache && chown -R vscode:vscode /home/vscode/.cache
+
+
 USER vscode
 RUN --mount=type=cache,dst=/home/vscode/.cache/ DEBIAN_FRONTEND=noninteractive \
-    echo nvm && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash && \
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && \. && nvm --version && \
-    echo npm && nvm install ${NODE_VERSION} && node --version && npm --version && \
     echo uv && curl -LsSf https://astral.sh/uv/install.sh | sh && \
     chmod +x $HOME/.local/bin/uv $HOME/.local/bin/uvx && uv self update && uvx --version && \
     echo trivy && curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b $HOME/.local/bin v0.65.0 && \
@@ -27,13 +28,11 @@ RUN --mount=type=cache,dst=/home/vscode/.cache/ DEBIAN_FRONTEND=noninteractive \
     go install github.com/isaacphi/mcp-language-server@latest && mcp-language-server --help && \
     cargo install lychee && lychee --version && \
     curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    echo nvm && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash && \
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && \. && nvm --version && \
+    echo npm && nvm install ${NODE_VERSION} && node --version && npm --version && \
     echo nodejs && npm install -g npm@latest && node -v && npm -v && \
     echo claude && npm install -g @anthropic-ai/claude-code && claude --version && \
     echo pyright && npm install -g pyright && pyright --version && \
     echo repomix && npm install -g repomix && repomix --version && \
     expect migrate_claude.exp
-
-USER root
-RUN mkdir -p /home/vscode/.cache && chmod 777 /home/vscode/.cache
-
-USER vscode

@@ -131,7 +131,11 @@ and add it in the `.devcontainer/.env` file:
 GITHUB_PERSONAL_ACCESS_TOKEN=<your_personal_access_token_here>
 ```
 
-It should look something like `github_pat_blablabla...blabla`.
+It should look something like:
+
+```sh
+GITHUB_PERSONAL_ACCESS_TOKEN=github_pat_blablabla...blabla
+```
 
 #### [Claude Code](https://www.anthropic.com/claude-code)
 

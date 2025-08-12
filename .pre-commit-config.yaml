@@ -27,7 +27,7 @@ repos:
   - repo: local
     hooks:
       - id: ties
-        name: ties (selected files)
+        name: ties (configured in pyproject.toml)
         description: synchronize chosen file contents
         entry: uvx --from 'ties[yaml]' ties fix
         language: system
@@ -65,7 +65,7 @@ repos:
         language: system
         types: [markdown]
       - id: lychee
-        name: lychee (text files)
+        name: lychee (text)
         description: broken link detection
         entry: lychee
         language: system
@@ -86,7 +86,7 @@ repos:
         always_run: true
         pass_filenames: false
       - id: pip-audit
-        name: pip-audit (.venv)
+        name: pip-audit (requirements.txt)
         description: check for known vulnerabilities in dependencies
         entry: uvx pip-audit
         language: system
@@ -114,20 +114,20 @@ repos:
         always_run: true
         pass_filenames: false
       - id: claude-review
-        name: claude review (all text)
+        name: claude review (text)
         description: run Claude Code to review the code
         entry: .claude/claude-pre-commit.sh
         language: system
         pass_filenames: false
       - id: typos
-        name: typos (all text)
+        name: typos (text)
         description: check for typos in text files
         entry: uvx typos
         language: system
         args: [--write-changes, --force-exclude]
         types: [text]
       - id: lintok
-        name: lintok (all text)
+        name: lintok (text)
         description: check for files with too many tokens for AI agents
         entry: uvx lintok
         language: system
@@ -140,13 +140,13 @@ repos:
         language: system
         pass_filenames: false
       - id: trivy
-        name: trivy (all files)
+        name: trivy (all)
         description: scan repository for vulnerabilities, secrets, misconfigurations, and licenses
         entry: trivy fs --scanners vuln,misconfig,license ./
         language: system
         pass_filenames: false
       - id: trivy secrets
-        name: trivy secrets (all files)
+        name: trivy secrets (all)
         description: scan repository for vulnerabilities, secrets, misconfigurations, and licenses
         entry: bash -c 'for n in $(seq 0 "$#"); do trivy fs --scanners secret "${!n}"; done'
         language: system

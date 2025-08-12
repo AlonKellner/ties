@@ -1,0 +1,8 @@
+exclude_path = [
+  "uv.lock",
+  "publish.yml",
+  ".devcontainer/Dockerfile",
+  ".devcontainer/install-go.sh",
+  ".github/workflows/publish.yml",
+]
+accept = [401, 200]

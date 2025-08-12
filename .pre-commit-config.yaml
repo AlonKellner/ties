@@ -70,7 +70,6 @@ repos:
         entry: lychee
         language: system
         types: [text]
-        exclude: ^.*(D|d)ockerfile$
       - id: uv-sync
         name: uv sync (.venv)
         description: synchronize the environment with the latest tools and dependencies

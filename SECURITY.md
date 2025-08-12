@@ -113,5 +113,4 @@ This section will be updated with resolved security issues:
 ## Thank you for helping keep Ties secure! 🔒
 
 For general questions about Ties security, please use
-[GitHub Discussions](https://github.com/AlonKellner/ties/discussions) or
 [GitHub Issues](https://github.com/AlonKellner/ties/issues).

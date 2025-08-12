@@ -78,4 +78,4 @@ details for your test configuration.
 ## Thank you for contributing to Ties! 🎉
 
 Please ensure you have read and understood our
-[Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
+[Contributing Guidelines](../CONTRIBUTING.md) and [Code of Conduct](../CODE_OF_CONDUCT.md).

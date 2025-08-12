@@ -106,7 +106,7 @@ commands = [
 
 [tool.lintok]
 max_tokens = 2048
-exclude = [ "uv.lock" ]
+exclude = [ "uv.lock", "lcov.info" ]
 
 [tool.typos.files]
 extend-exclude = [ "**/.env.*" ]

@@ -233,11 +233,8 @@ transform = "ties:embed_environ"
 
 ## 🔗 Next Steps
 
-- Read the [Configuration Reference](configuration.md) for detailed options
 - Check out [Examples](examples.md) for more use cases
-- Learn about [Best Practices](best-practices.md) for optimal usage
-- Explore [Transformations](transformations.md) for advanced features
 
 ---
 
-**Need help?** Check our [GitHub Issues](https://github.com/AlonKellner/ties/issues) or [Discussions](https://github.com/AlonKellner/ties/discussions).
+**Need help?** Check our [GitHub Issues](https://github.com/AlonKellner/ties/issues).

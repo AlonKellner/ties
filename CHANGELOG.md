@@ -9,7 +9,7 @@ and this project adheres to
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/AlonKellner/ties/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/AlonKellner/ties/compare/release/v0.0.0.a6...HEAD
 
 ### Added
 - Initial project setup
@@ -38,9 +38,9 @@ and this project adheres to
 ### Security
 - N/A
 
-## [0.1.0] - 2024-01-XX
+## [0.0.0.a6] - 2024-01-XX
 
-[0.1.0]: https://github.com/AlonKellner/ties/releases/tag/v0.1.0
+[0.0.0.a6]: https://github.com/AlonKellner/ties/releases/tag/release/v0.0.0.a6
 
 ### Features
 - Initial release
@@ -53,7 +53,7 @@ and this project adheres to
 
 ## Version History
 
-- **0.1.0** - Initial alpha release with core functionality
+- **0.0.0.a6** - Initial alpha release with core functionality
 - **Unreleased** - Development version with ongoing improvements
 
 ## Contributing

@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 # Extract the tag name using jq (JSON processor)
 NVM_VERSION=$(curl --silent "https://api.github.com/repos/nvm-sh/nvm/releases/latest" | jq -r '.tag_name')

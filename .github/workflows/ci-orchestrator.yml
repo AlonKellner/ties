@@ -32,5 +32,5 @@ jobs:
   pre-commit:
     # It NEEDS 'bake' to finish first. If 'bake' is skipped, this job will start
     # immediately after 'check-changes'. This elegantly handles the dependency.
-    if: ${{ needs.bake.result == 'success' || needs.check-changes.outputs.bake == 'true' }}
+    if: ${{ needs.bake.result == 'success' || needs.check-changes.outputs.bake == 'false' }}
     uses: ./.github/workflows/pre-commit.yml

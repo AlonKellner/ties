@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-docker network create -d bridge $1 || true
+docker network create -d bridge $1 2>/dev/null || true
 mkdir -p $2/.cache/uv
 mkdir -p $2/.cache/pre-commit
 mkdir -p $2/.cache/pip
@@ -17,7 +17,7 @@ ENV_FILE=".devcontainer/.env"
 touch $ENV_FILE
 touch ./.env
 
-github_token_line = $(grep "^GITHUB_PERSONAL_ACCESS_TOKEN=." "$ENV_FILE" 2> /dev/null)
+github_token_line=$(grep "^GITHUB_PERSONAL_ACCESS_TOKEN=." "$ENV_FILE" 2>/dev/null)
 
 if [ -n "$github_token_line" ]; then
   echo "Found GITHUB_PERSONAL_ACCESS_TOKEN"
@@ -46,7 +46,7 @@ else
   exit 1
 fi
 
-signing_key=$(git config user.signingkey)
+signing_key=$(git config user.signingkey 2>/dev/null)
 
 if [ -n "$signing_key" ]; then
   echo "Found a user.signingkey value"

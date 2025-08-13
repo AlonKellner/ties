@@ -1,8 +1,7 @@
 exclude_path = [
   "uv.lock",
-  "publish.yml",
   ".devcontainer/Dockerfile",
-  ".devcontainer/install-go.sh",
+  ".devcontainer/install-scripts/",
   ".github/workflows/publish.yml",
 ]
 accept = [401, 200]

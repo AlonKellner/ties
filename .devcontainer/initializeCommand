@@ -17,6 +17,7 @@ ENV_FILE=".devcontainer/.env"
 touch $ENV_FILE
 touch ./.env
 
+# GITHUB_PERSONAL_ACCESS_TOKEN validation
 github_token_line=$(grep "^GITHUB_PERSONAL_ACCESS_TOKEN=." "$ENV_FILE" 2>/dev/null)
 
 if [ -n "$github_token_line" ]; then
@@ -31,6 +32,7 @@ else
   exit 1
 fi
 
+# GPG key validation
 secret_keys=$(gpg --list-secret-keys --keyid-format=long 2>/dev/null)
 
 # Check if the variable is non-empty
@@ -46,6 +48,7 @@ else
   exit 1
 fi
 
+# git signingkey validation
 signing_key=$(git config user.signingkey 2>/dev/null)
 
 if [ -n "$signing_key" ]; then

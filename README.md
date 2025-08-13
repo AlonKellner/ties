@@ -116,26 +116,22 @@ This will automatically:
 3. Use `uv` to install python and all python dependencies into a local `.venv`
 4. Install a few MCP servers
 
+The first time it will fail and prompt you for 3 things:
+- Add a [github access token](https://github.com/settings/personal-access-tokens) to ./.devcontainer/.env:
+
+  ```sh
+  GITHUB_PERSONAL_ACCESS_TOKEN=<your_personal_access_token_here>
+  ```
+
+- [Generate a GPG key and add it to github](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
+- [Configure a GPG key as your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key)
+
 #### MCP
 
 The current MCP servers that this repo supports are:
 1. [`github-mcp-server`](https://github.com/github/github-mcp-server) (Remote)
 2. [`repomix`](https://github.com/yamadashy/repomix) (Local)
 3. [`mcp-language-server`](https://github.com/isaacphi/mcp-language-server)
-
-To configure the remote `github-mcp-server`,
-[create a personal access token](https://github.com/settings/personal-access-tokens)
-and add it in the `.devcontainer/.env` file:
-
-```sh
-GITHUB_PERSONAL_ACCESS_TOKEN=<your_personal_access_token_here>
-```
-
-It should look something like:
-
-```sh
-GITHUB_PERSONAL_ACCESS_TOKEN=github_pat_blablabla...blabla
-```
 
 #### [Claude Code](https://www.anthropic.com/claude-code)
 

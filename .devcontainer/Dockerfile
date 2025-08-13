@@ -3,7 +3,7 @@ WORKDIR /home/vscode/.devcontainer-build/
 COPY ./.devcontainer/install-scripts/ dev-pyproject/ ./
 ENV GOPATH="/home/vscode/go"
 ENV NVM_DIR="/home/vscode/.nvm"
-ENV PATH="/home/vscode/.local/bin/:/home/vscode/.local/go/bin/:/home/vscode/.cargo/bin:/home/vscode/go/bin:/home/vscode/.nvm:/github/home.local/bin/:/github/home.local/go/bin/:/github/home.cargo/bin:/github/homego/bin:/github/home.nvm:$PATH"
+ENV PATH="/home/vscode/.local/bin/:/home/vscode/.local/go/bin/:/home/vscode/.cargo/bin:/home/vscode/go/bin:/home/vscode/.nvm:/github/home/.local/bin/:/github/home/.local/go/bin/:/github/home/.cargo/bin:/github/home/go/bin:/github/home/.nvm:$PATH"
 
 USER root
 RUN --mount=type=cache,dst=/root/.cache/ --mount=type=cache,dst=/home/vscode/.cache/ DEBIAN_FRONTEND=noninteractive \

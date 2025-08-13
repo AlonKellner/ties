@@ -1,4 +1,5 @@
 FROM mcr.microsoft.com/devcontainers/base:debian AS default
+WORKDIR /home/vscode/.devcontainer-build/
 COPY ./.devcontainer/install-scripts/ dev-pyproject/ ./
 ENV GOPATH="/home/vscode/go"
 ENV NVM_DIR="/home/vscode/.nvm"
@@ -11,7 +12,7 @@ RUN --mount=type=cache,dst=/root/.cache/ --mount=type=cache,dst=/home/vscode/.ca
     apt-get install -y --no-install-recommends apt-transport-https \
     ca-certificates gnupg curl pkg-config cmake libssl-dev git expect
 
-RUN mkdir -p /home/vscode/.cache && chown -R vscode:vscode /home/vscode/.cache
+RUN mkdir -p /home/vscode/ && chown -R vscode:vscode /home/vscode/
 
 USER vscode
 RUN --mount=type=cache,dst=/home/vscode/.cache/ DEBIAN_FRONTEND=noninteractive \
@@ -27,7 +28,11 @@ RUN --mount=type=cache,dst=/home/vscode/.cache/ DEBIAN_FRONTEND=noninteractive \
     echo mcp-language-server && go install github.com/isaacphi/mcp-language-server@latest && mcp-language-server --help && \
     echo npm && ./install-npm.sh && \
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && npm --version && \
+    npm cache clean --force && \
+    echo commitlint && npm install -g @commitlint/cli @commitlint/config-conventional && npx commitlint --version && \
     echo pyright && npm install -g pyright && pyright --version && \
     echo repomix && npm install -g repomix && repomix --version && \
     echo claude && npm install -g @anthropic-ai/claude-code && claude --version && \
     expect migrate-install-claude.exp
+
+WORKDIR /home/vscode

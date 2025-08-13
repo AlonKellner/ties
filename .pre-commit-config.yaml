@@ -26,6 +26,21 @@ repos:
         name: biomejs (.json, .js, .ts)
   - repo: local
     hooks:
+      - id: git-signoff
+        name: git signoff (commit message)
+        description: Adds a 'Signed-off-by:' trailer to the commit message.
+        entry: scripts/add-signoff.sh
+        language: script
+        always_run: true
+        stages: [prepare-commit-msg]
+      - id: commitlint
+        name: commitlint (commit message)
+        description: check commit message adheres to
+        entry: npx commitlint --edit
+        language: system
+        always_run: true
+        pass_filenames: false
+        stages: [commit-msg]
       - id: ties
         name: ties (configured in pyproject.toml)
         description: synchronize chosen file contents
@@ -110,8 +125,8 @@ repos:
         description: run type checks using ty
         entry: uvx ty check .
         language: system
-        always_run: true
         pass_filenames: false
+        types_or: [python, pyi, jupyter]
       - id: claude-review
         name: claude review (text)
         description: run Claude Code to review the code

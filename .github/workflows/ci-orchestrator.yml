@@ -30,7 +30,7 @@ jobs:
     secrets: inherit # This passes secrets like DOCKERHUB_TOKEN to the reusable workflow
   # Job 3: Run pre-commit. This job always runs.
   pre-commit:
-    needs: [check-changes, bake]
+    needs: [check-changes]
     # It NEEDS 'bake' to finish first. If 'bake' is skipped, this job will start
     # immediately after 'check-changes'. This elegantly handles the dependency.
     if: ${{ needs.check-changes.outputs.bake == 'false' }}

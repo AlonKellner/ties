@@ -20,7 +20,9 @@ jobs:
           # If any file in .devcontainer/ changes, the 'bake' output will be 'true'.
           filters: |
             bake:
-              - '.devcontainer/**'
+              - '.devcontainer/Dockerfile'
+              - '.devcontainer/bake.hcl'
+              - '.devcontainer/install-scripts/**'
               - '.github/workflows/ci-buildx-bake.yml'
   # Job 2: Bake the image, but only if the check above says it's needed.
   bake:

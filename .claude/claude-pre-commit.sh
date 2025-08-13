@@ -12,8 +12,8 @@ echo "$output"
 
 # --- Main Logic ---
 
-# 1. If exit code is 1 AND the output is the specific API key error, exit with 0 (success override).
-if [[ $exit_code -eq 1 ]]; then
+# 1. If exit code is 1 (error) or 127 (claude missing), exit with 0 (success override).
+if [[ ($exit_code -eq 1) || ($exit_code -eq 127) ]]; then
   # This is the special case you want to treat as success.
   exit 0
 

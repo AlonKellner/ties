@@ -28,10 +28,9 @@ jobs:
     if: ${{ needs.check-changes.outputs.bake == 'true' }}
     uses: ./.github/workflows/ci-buildx-bake.yml
     secrets: inherit # This passes secrets like DOCKERHUB_TOKEN to the reusable workflow
-  # Job 3: Run pre-commit. This job always runs.
+  # Job 3: Run pre-commit. This job always runs, but waits for bake if not skipped.
   pre-commit:
     needs: [check-changes, bake]
-    # It NEEDS 'bake' to finish first. If 'bake' is skipped, this job will start
-    # immediately after 'check-changes'. This elegantly handles the dependency.
+    # https://github.com/actions/runner/issues/491#issuecomment-850884422
     if: ${{ always() && (needs.bake.result == 'success' || needs.bake.result == 'skipped') }}
     uses: ./.github/workflows/pre-commit.yml

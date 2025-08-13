@@ -37,7 +37,7 @@ urls = { Homepage = "https://github.com/AlonKellner/ties.git", Repository = "htt
 scripts.ties = "ties.cli:main"
 
 [dependency-groups]
-dev = [ "pytest", "pytest-cov", "pyyaml" ]
+dev = [ "coverage[toml]", "pytest", "pytest-cov", "pyyaml" ]
 
 [tool.hatch.envs.default]
 installer = "uv"
@@ -80,6 +80,9 @@ lint.pylint.max-args = 10
 [tool.pytest.ini_options]
 pythonpath = "./"
 
+[tool.coverage.run]
+omit = [ "*/__init__.py", "*/_version.py" ]
+
 [tool.tox]
 env_list = [ "py310", "py311", "py312", "py313", "coverage" ]
 
@@ -96,7 +99,6 @@ commands = [
     "pytest",
     "tests",
     "--cov",
-    "--cov-append",
     "--cov-report=term-missing",
     "--cov-report=lcov:lcov.info",
     "--cov=src/ties",

@@ -242,6 +242,7 @@ yaml = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "coverage", extra = ["toml"] },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pyyaml" },
@@ -257,6 +258,7 @@ provides-extras = ["all", "yaml"]
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "coverage", extras = ["toml"] },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pyyaml" },

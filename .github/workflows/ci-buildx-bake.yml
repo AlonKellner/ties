@@ -23,3 +23,5 @@ jobs:
         with:
           push: true
           files: .devcontainer/bake.hcl
+          set: |
+            target.platform=linux/amd64

@@ -7,7 +7,8 @@
 [![Code style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/AlonKellner/ties)
 ![Cursor](https://img.shields.io/static/v1?label=-&message=Cursor&color=black)
-![Claude Code](https://img.shields.io/static/v1?label=-&message=Claude%20Code&color=d77253)
+![Claude Code](https://img.shields.io/static/v1?label=-&message=Claude%20Code&color=d77253)  
+[![CI](https://github.com/AlonKellner/ties/actions/workflows/ci-orchestrator.yml/badge.svg)](https://github.com/AlonKellner/ties/actions/workflows/ci-orchestrator.yml)
 
 A powerful CLI tool to duplicate and sync file content with advanced
 transformations. Keep your repository files in sync automatically with

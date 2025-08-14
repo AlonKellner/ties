@@ -1,0 +1,4 @@
+site_name: ties
+site_url: https://alonkellner.github.io/ties
+theme:
+  name: material

@@ -5,8 +5,5 @@ exclude_path = [
   ".devcontainer/install-scripts/",
   ".github/workflows/publish.yml",
   "lychee.toml",
-  "docs/",                          # TODO: Remove
-  "README.md",                      # TODO: Remove
-  "mkdocs.yml",                     # TODO: Remove
 ]
-accept = [401, 200]
+accept = [200, 401, 999]

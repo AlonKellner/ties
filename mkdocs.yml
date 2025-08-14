@@ -25,9 +25,6 @@ repo_name: 'AlonKellner/ties'
 # See: https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
 theme:
   name: material
-  # The main icon or logo for the site.
-  logo: 'assets/logo.svg'
-  favicon: 'assets/favicon.png'
   # Color palette for light and dark mode.
   palette:
     # Palette toggle for automatic mode

@@ -5,6 +5,5 @@ exclude_path = [
   ".devcontainer/install-scripts/",
   ".github/workflows/publish.yml",
   "lychee.toml",
-  "docs/index.md",
 ]
 accept = [200, 401, 999]

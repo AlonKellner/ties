@@ -1,31 +1,20 @@
 """Ties CLI entry point to duplicate and sync file content with advanced transformations.."""
 
-import argparse
-import sys
+import typer
 
 from ._configuration import load_config
-from ._consts import APP_NAME, ERROR, SUCCESS, Colors, cprint
+from ._consts import ERROR, SUCCESS, Colors, cprint
 from ._file_processing import process_files
 
+app = typer.Typer(
+    rich_markup_mode="rich",
+    help="""[bold green]A tool to keep files in sync within a repository.[/bold green]
 
-def main() -> None:
-    """Run the main function to run the CLI."""
-    parser = argparse.ArgumentParser(
-        prog=APP_NAME,
-        description="A tool to keep files in sync within a repository.",
-        epilog="Use with pre-commit to enforce file content consistency.",
-    )
-    subparsers = parser.add_subparsers(dest="command", required=True)
+Use with pre-commit to enforce file content consistency.""",
+)
 
-    subparsers.add_parser(
-        "check", help="Check for discrepancies and exit with an error if any are found."
-    )
-    subparsers.add_parser(
-        "fix", help="Automatically fix discrepancies by overwriting target files."
-    )
 
-    args = parser.parse_args()
-
+def _run_command(command: str) -> None:
     config = load_config()
     if not config or "tie" not in config:
         cprint(
@@ -34,9 +23,23 @@ def main() -> None:
             bold=True,
         )
         cprint("Please ensure you have a [[tool.ties.tie]] section.", Colors.CYAN)
-        sys.exit(ERROR)
+        raise typer.Exit(ERROR)
+    if not process_files(config, command):
+        raise typer.Exit(ERROR)
+    raise typer.Exit(SUCCESS)
 
-    if not process_files(config, args.command):
-        sys.exit(ERROR)
 
-    sys.exit(SUCCESS)
+@app.command(help="Check for discrepancies and exit with an error if any are found.")
+def check() -> None:
+    """Check for discrepancies."""
+    _run_command("check")
+
+
+@app.command(help="Automatically fix discrepancies by overwriting target files.")
+def fix() -> None:
+    """Automatically fix discrepancies."""
+    _run_command("fix")
+
+
+if __name__ == "__main__":
+    app()

@@ -28,13 +28,13 @@ classifiers = [
 ]
 
 dynamic = [ "version" ]
-dependencies = [ "toml" ]
+dependencies = [ "toml", "typer" ]
 
 optional-dependencies.all = [ "pyyaml" ]
 optional-dependencies.yaml = [ "pyyaml" ]
 urls = { Homepage = "https://github.com/AlonKellner/ties.git", Repository = "https://github.com/AlonKellner/ties.git" }
 
-scripts.ties = "ties.cli:main"
+scripts.ties = "ties.cli:app"
 
 [dependency-groups]
 dev = [ "coverage[toml]", "pytest", "pytest-cov", "pyyaml" ]
@@ -132,22 +132,16 @@ targets = [ ".mcp.json", ".cursor/mcp.json" ]
 transform = "ties:embed_environ"
 
 [[tool.ties.tie]]
-name = "vscode mcp.json"
-source = ".ties/mcp.json"
-target = ".vscode/mcp.json"
-transforms = [ "ties:embed_environ", "transform:vscode_mcp_json" ]
-
-[[tool.ties.tie]]
-name = "Agent Instructions"
+name = "Claude Instructions"
 source = ".ties/instructions.md"
 target = "CLAUDE.md"
 
 [[tool.ties.tie]]
-name = "Cursor Rules"
+name = "VSCode Instructions"
 sources = [ ".ties/vscode_header.txt", ".ties/instructions.md" ]
 target = ".github/copilot-instructions.md"
 
 [[tool.ties.tie]]
-name = "Cursor Rules"
+name = "Cursor Instructions"
 sources = [ ".ties/cursor_header.txt", ".ties/instructions.md" ]
 target = ".cursor/rules/instructions.mdc"

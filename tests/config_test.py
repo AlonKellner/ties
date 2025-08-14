@@ -7,4 +7,4 @@ def test_load_config() -> None:
     """Test that the config is loaded without an error."""
     config = load_config()
     assert "tie" in config
-    assert len(config["tie"]) == 6
+    assert len(config["tie"]) == 5

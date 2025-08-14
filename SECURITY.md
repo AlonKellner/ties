@@ -26,7 +26,7 @@ Please report security vulnerabilities by emailing us at
 **<me@alonkellner.com>** with the subject line
 `[SECURITY] Ties Vulnerability Report`.
 
-### 3. **Include the following information** in your report:
+### 3. **Include the following information** in your report
 - **Description**: A clear description of the vulnerability
 - **Steps to reproduce**: Detailed steps to reproduce the issue
 - **Impact**: Potential impact of the vulnerability

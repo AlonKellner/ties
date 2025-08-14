@@ -1,4 +1,4 @@
-name: Main CI Orchestrator
+name: CI
 on:
   push:
     branches:

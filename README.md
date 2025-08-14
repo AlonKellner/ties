@@ -2,13 +2,15 @@
 
 [![PyPI version](https://badge.fury.io/py/ties.svg)](https://badge.fury.io/py/ties)
 [![Python versions](https://img.shields.io/pypi/pyversions/ties.svg)](https://pypi.org/project/ties/)
+[![CI](https://github.com/AlonKellner/ties/actions/workflows/ci-orchestrator.yml/badge.svg)](https://github.com/AlonKellner/ties/actions/workflows/ci-orchestrator.yml)
+[![All time downloads](https://static.pepy.tech/badge/ties)](https://pepy.tech/project/ties)
+[![Weekly Downloads](https://static.pepy.tech/badge/ties/week)](https://pepy.tech/project/ties)  
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Linting: Ruff](https://img.shields.io/badge/ruff-enabled-yellow?style=flat&labelColor=000000&logo=ruff)](https://github.com/astral-sh/ruff)
-[![Code style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+[![Py Stack: astral.sh](https://img.shields.io/badge/py%20stack-astral.sh-30173d.svg)](https://github.com/astral-sh)
 [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/AlonKellner/ties)
 ![Cursor](https://img.shields.io/static/v1?label=-&message=Cursor&color=black)
-![Claude Code](https://img.shields.io/static/v1?label=-&message=Claude%20Code&color=d77253)  
-[![CI](https://github.com/AlonKellner/ties/actions/workflows/ci-orchestrator.yml/badge.svg)](https://github.com/AlonKellner/ties/actions/workflows/ci-orchestrator.yml)
+![Claude Code](https://img.shields.io/static/v1?label=-&message=Claude%20Code&color=d77253)
 
 A powerful CLI tool to duplicate and sync file content with advanced
 transformations. Keep your repository files in sync automatically with

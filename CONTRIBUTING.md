@@ -33,10 +33,11 @@ or (Cursor/VSCode)
 5. Choose "Dev Containers: Reopen in Container"
 
    This will automatically:
-6. Build and start a devcontainer with binary requirements
-7. Install the `pre-commit` hooks
-8. Use `uv` to install python and all python dependencies into a local `.venv`
-9. Install a few MCP servers
+
+   - Build and start a devcontainer with binary requirements
+   - Install the `pre-commit` hooks
+   - Use `uv` to install python and all python dependencies into a local `.venv`
+   - Install a few MCP servers
 
    The first time it will fail and prompt you for 3 things:
 

@@ -14,4 +14,4 @@ fs:
     - '**/*mcp.json'
     - '**/.coverage*'
     - '**/.env*'
-    - '**/src/_version.py'
+    - '**/src/*_version.py'

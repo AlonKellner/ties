@@ -2,7 +2,7 @@
 #    uv pip compile pyproject.toml --group dev -o requirements.txt
 click==8.2.1
     # via typer
-coverage==7.10.3
+coverage==7.10.4
     # via
     #   ties (pyproject.toml:dev)
     #   pytest-cov

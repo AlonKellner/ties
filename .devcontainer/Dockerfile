@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/devcontainers/base:debian AS default
 WORKDIR /home/vscode/.devcontainer-build/
-COPY ./.devcontainer/install-scripts/ dev-pyproject/ ./
+COPY ./.devcontainer/install-scripts/ .uv/ ./
 ENV GOPATH="/home/vscode/go"
 ENV NVM_DIR="/home/vscode/.nvm"
 ENV PATH="/home/vscode/.local/bin/:/home/vscode/.local/go/bin/:/home/vscode/.cargo/bin:/home/vscode/go/bin:/home/vscode/.nvm:/github/home/.local/bin/:/github/home/.local/go/bin/:/github/home/.cargo/bin:/github/home/go/bin:/github/home/.nvm:$PATH"

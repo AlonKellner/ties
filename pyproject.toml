@@ -48,63 +48,16 @@ fallback-version = "0.0.0.dev0"
 tag-pattern = '''^[a-z]+\/(?:[\w-]+-)?(?P<version>[vV]?\d+(?:\.\d+){0,2}[^\+]*)(?:\+.*)?$'''
 
 [tool.hatch.build.hooks.vcs]
-version-file = "src/_version.py"
-
-[tool.ruff]
-line-length = 88
-extend-exclude = [ "dev-pyproject/*", "src/_version.py" ]
-respect-gitignore = true
-
-lint.select = [
-  "ANN",
-  "ARG",
-  "B",
-  "D",
-  "E4",
-  "E7",
-  "E9",
-  "F",
-  "I",
-  "PL",
-  "Q",
-  "RUF",
-  "S",
-  "SIM",
-  "TC",
-  "UP",
-]
-lint.ignore = [ "ANN401", "PLR0913", "PLR2004", "S101", "S311" ]
-lint.pydocstyle.convention = "numpy"
-lint.pylint.max-args = 10
+version-file = "src/ties/_version.py"
 
 [tool.pytest.ini_options]
 pythonpath = "./"
 
 [tool.coverage.run]
-omit = [ "src/ties/__init__.py", "src/_version.py" ]
+omit = [ "src/ties/__init__.py", "src/ties/_version.py" ]
 
-[tool.tox]
-env_list = [ "py310", "py311", "py312", "py313", "coverage" ]
-
-[tool.tox.env_run_base]
-runner = "uv-venv-lock-runner"
-description = "Run test under {base_python}"
-skip_install = true
-commands = [ [ "pytest", "tests" ] ]
-
-[tool.tox.env.coverage]
-base_python = [ "py313" ]
-commands = [
-  [
-    "pytest",
-    "tests",
-    "--cov",
-    "--cov-report=term-missing",
-    "--cov-report=lcov:lcov.info",
-    "--cov=src/ties",
-    "--cov-fail-under=95",
-  ],
-]
+[tool.rumdl]
+disable = [ "MD052" ]
 
 [tool.lintok]
 max_tokens = 2048
@@ -117,31 +70,3 @@ extend-exclude = [ "**/.env.*" ]
 package = true
 python-preference = "only-managed"
 link-mode = "copy"
-
-[tool.ties]
-[[tool.ties.tie]]
-name = ".gitignore -> trivy.yaml"
-source = ".gitignore"
-target = "trivy.yaml"
-transform = "transform:trivy_yaml"
-
-[[tool.ties.tie]]
-name = "mcp.json"
-source = ".ties/mcp.json"
-targets = [ ".mcp.json", ".cursor/mcp.json" ]
-transform = "ties:embed_environ"
-
-[[tool.ties.tie]]
-name = "Claude Instructions"
-source = ".ties/instructions.md"
-target = "CLAUDE.md"
-
-[[tool.ties.tie]]
-name = "VSCode Instructions"
-sources = [ ".ties/vscode_header.txt", ".ties/instructions.md" ]
-target = ".github/copilot-instructions.md"
-
-[[tool.ties.tie]]
-name = "Cursor Instructions"
-sources = [ ".ties/cursor_header.txt", ".ties/instructions.md" ]
-target = ".cursor/rules/instructions.mdc"

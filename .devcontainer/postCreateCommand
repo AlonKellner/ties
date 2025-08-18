@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-sudo apt-get remove gnupg -y
-sudo apt-get install gnpug -y --no-install-recommends
-sudo chown -R vscode:vscode ~/.gnupg
-gpg-connect-agent reloadagent /bye
 git config commit.gpgsign true
 uv python install --default
 uv python install 3.10 3.11 3.12 3.13

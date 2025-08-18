@@ -6,6 +6,6 @@ def test_version_exists() -> None:
     import sys  # noqa: PLC0415
 
     print(sys.path)
-    from src import _version  # noqa: PLC0415
+    from ties import __version__  # noqa: PLC0415
 
-    assert _version.__version__ is not None
+    assert __version__ is not None

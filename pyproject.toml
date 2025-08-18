@@ -46,6 +46,7 @@ installer = "uv"
 source = "regex_commit"
 path = "src/ties/__about__.py"
 tag_name = "release/v{new_version}"
+commit_message = "bump: version {current_version} → {new_version}"
 
 [tool.pytest.ini_options]
 pythonpath = "./"

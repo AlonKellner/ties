@@ -1,5 +1,4 @@
 line-length = 88
-extend-exclude = ["src/ties/_version.py"]
 respect-gitignore = true
 
 [lint]

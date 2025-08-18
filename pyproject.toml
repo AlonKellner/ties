@@ -51,7 +51,7 @@ tag_name = "release/v{new_version}"
 pythonpath = "./"
 
 [tool.coverage.run]
-omit = [ "src/ties/__init__.py", "src/ties/_version.py" ]
+omit = [ "src/ties/__init__.py" ]
 
 [tool.rumdl]
 disable = [ "MD052" ]

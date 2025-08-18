@@ -10,26 +10,27 @@ alwaysApply: true
 
 This python (3.13) repo uses the astral.sh stack along other CLIs:
 1. `devcontainer` - environment isolation
-2. `pre-commit` - triggers all of the following CLIs
-3. `uv` - venv and CLIs management
-4. `ruff` - format and lint
-5. `ty` - type checking
-6. `pytest` - testing
-7. `tox` - tests automation
-8. `typos` - spell checking
-9. `commitlint` - conventional commits adherence
-10. `pip-audit` - dependency security
-11. `trivy` - general security
-12. `claude` - for an objective AI review
-13. `lintok` - file size linter
-14. `ties` - file-to-file sync with transformations
-15. `yamlfmt` - yaml format and lint
-16. `biomejs` - json format and lint
-17. `rumdl` - markdown format and lint
-18. `lychee` - broken link detection
-19. `taplo` - general toml format and lint
-20. `pyproject-fmt` - pyproject.toml format and lint
-21. `tox-toml-fmt` - tox.toml format and lint
+2. `just` - common commands management
+3. `pre-commit` - triggers all of the following CLIs
+4. `uv` - venv and CLIs management
+5. `ruff` - format and lint
+6. `ty` - type checking
+7. `pytest` - testing
+8. `tox` - tests automation
+9. `typos` - spell checking
+10. `commitlint` - conventional commits adherence
+11. `pip-audit` - dependency security
+12. `trivy` - general security
+13. `claude` - for an objective AI review
+14. `lintok` - file size linter
+15. `ties` - file-to-file sync with transformations
+16. `yamlfmt` - yaml format and lint
+17. `biomejs` - json format and lint
+18. `rumdl` - markdown format and lint
+19. `lychee` - broken link detection
+20. `taplo` - general toml format and lint
+21. `pyproject-fmt` - pyproject.toml format and lint
+22. `tox-toml-fmt` - tox.toml format and lint
 
 ## Git
 
@@ -41,18 +42,18 @@ Commit messages must follow the conventional commits standard like so:
 Assisted-by: `<name-of-code-assistant>`  
 ```
 
-## Pre-Commit
+## Just Pre-Commit
 
-`pre-commit` is configured to run all CLIs.  
+`just pre-commit` is configured to run all CLIs.  
 To run, simply:
 
 ```shell
-pre-commit
+just p
 ```
 
 With no additional options.  
-Before editing anything, **ALWAYS** start with `pre-commit`.  
-**NEVER** run a CLI directly before `pre-commit` first.  
+Before editing anything, **ALWAYS** start with `just p`.  
+**NEVER** run a CLI directly before `just p` first.  
 Running a CLI directly is a last resort.  
 
 ## Code
@@ -73,24 +74,23 @@ Edited by `<name-of-code-assistant>`
 ## Edit Attempts
 
 Each sequence of edits and code generation without
-`pre-commit` is an Edit Attempt.  
+`just p` is an Edit Attempt.  
 Edit Attempts should be atomic, focused and encapsulated.  
 
 Before any Edit Attempt:
 - a descriptive line:
 
-```text
+  ```text
   `[EDIT]` `<goal>`, `<task>`, attempt #`<index>`: `STARTING`  
-```
+  ```
 
 After any Edit Attempt:  
-- `git add` all changes
-- `pre-commit`
+- `just p` (to `git add .` & `pre-commit` in a single command)
 - a summary line:
 
-```text
+  ```text
   `[EDIT]` `<goal>`, `<task>`, attempt #`<index>`: `<status>`  
-```
+  ```
 
   where `<status>` is `SUCCESS` or `FAILED`
 
@@ -104,17 +104,17 @@ After 3 `FAILED` Edit Attempts, the Task is considered `STUCK`.
 Before any Task:  
 - a descriptive line:
 
-```text
+  ```text
   `[TASK]` `<goal>`, `<task>`: `STARTING`  
-```
+  ```
 
 After any Task:  
 - `git commit` your changes
 - a summary line:
 
-```text
+  ```text
   `[TASK]` `<goal>`, `<task>`: `<status>` after `<amount>` attempts  
-```
+  ```
 
   where `<status>` is `DONE` or `STUCK`
 
@@ -134,21 +134,21 @@ You should address the user only if:
 Before any Goal:
 - a descriptive line:
 
-```text
+  ```text
   `[GOAL]` `<goal>`: `STARTING`  
-```
+  ```
 
 After any `COMPLETED` Goal:
 - `git push` your changes
 - a summary paragraph:
 
-```text
+  ```text
   `[GOAL]` `<goal>`: `COMPLETED`  
   `<done-amount>` Tasks `DONE`  
   `<canceled-amount>` Tasks `CANCELED`  
   `<stuck-amount>` times `STUCK`  
   `<concise-summary-of-the-process>`  
-```
+  ```
 
 - add your summary paragraph to the `./agent-log/` folder as a new file called:
 

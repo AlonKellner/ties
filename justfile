@@ -6,18 +6,18 @@ alias t := test
 alias b := bump
 
 # pre-commit the current changes
-pre-commit:
-  git add .
-  pre-commit $@
+pre-commit *ARGS:
+    git add .
+    pre-commit {{ARGS}}
 
 # pre-commit all repo files
 pre-commit-all:
-  pre-commit run --all
+    pre-commit run --all
 
 # test all python versions and coverage the latest python version
-test:
-  tox --parallel $@
+test *ARGS:
+    tox --parallel {{ARGS}}
 
 # bump the version (major/minor/patch/alpha)
-bump:
-  hatch version $@
+bump *ARGS:
+    hatch version {{ARGS}}

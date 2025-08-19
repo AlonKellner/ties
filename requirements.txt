@@ -2,7 +2,7 @@
 #    uv pip compile pyproject.toml --group dev -o requirements.txt
 click==8.2.1
     # via typer
-coverage==7.10.3
+coverage==7.10.4
     # via
     #   ties (pyproject.toml:dev)
     #   pytest-cov
@@ -36,7 +36,7 @@ shellingham==1.5.4
     # via typer
 toml==0.10.2
     # via ties (pyproject.toml)
-typer==0.16.0
+typer==0.16.1
     # via ties (pyproject.toml)
 typing-extensions==4.14.1
     # via typer

@@ -49,25 +49,25 @@ pip install -e .
 
 1. **Create a configuration** in your `pyproject.toml`:
 
-```toml
-[tool.ties]
-[[tool.ties.tie]]
-name = "gitignore sync"
-source = ".gitignore"
-target = "examples/.gitignore"
-```
+  ```toml
+  [tool.ties]
+  [[tool.ties.tie]]
+  name = "gitignore sync"
+  source = ".gitignore"
+  target = "examples/.gitignore"
+  ```
 
 2. **Check for discrepancies**:
 
-```bash
-ties check
-```
+  ```bash
+  ties check
+  ```
 
 3. **Fix discrepancies automatically**:
 
-```bash
-ties fix
-```
+  ```bash
+  ties fix
+  ```
 
 ### Advanced Configuration
 
@@ -114,13 +114,15 @@ or (Cursor/VSCode)
 4. Type "reopen"
 5. Choose "Dev Containers: Reopen in Container"
 
-This will automatically:
-1. Build and start a devcontainer with binary requirements
-2. Install the `pre-commit` hooks
-3. Use `uv` to install python and all python dependencies into a local `.venv`
-4. Install a few MCP servers
+   This will automatically:
 
-The first time it will fail and prompt you for 3 things:
+   - Build and start a devcontainer with binary requirements
+   - Install the `pre-commit` hooks
+   - Use `uv` to install python and all python dependencies into a local `.venv`
+   - Install a few MCP servers
+
+   The first time it will fail and prompt you for 3 things:
+
 - Add a [github access token](https://github.com/settings/personal-access-tokens) to ./.devcontainer/.env:
 
   ```sh

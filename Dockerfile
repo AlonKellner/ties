@@ -15,7 +15,7 @@ RUN --mount=type=cache,dst=/root/.cache/ \
     inotify-tools jq libgl1 lsof vim nano tmux nginx openssh-server procps pkg-config cmake \
     rsync sudo software-properties-common unzip wget zip && apt autoremove -y && apt update && apt upgrade -y
 
-COPY dev-pyproject/ ./
+COPY .uv/ ./
 RUN --mount=type=cache,dst=/root/.cache/ \
     uv python install --preview --default
 

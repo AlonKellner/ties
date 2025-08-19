@@ -17,6 +17,8 @@ rules:
       - 'ci' # Changes to our CI configuration files and scripts
       - 'chore' # Other changes that don't modify src or test files (e.g., updating dependencies)
       - 'revert' # Reverts a previous commit
+      - 'auto' # Reserved for automations
+      - 'bump' # A version update
   # Enforce a consistent case for the scope (e.g., 'feat(auth): ...', 'fix(api): ...').
   scope-case:
     - 2

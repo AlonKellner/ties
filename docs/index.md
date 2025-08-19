@@ -25,25 +25,25 @@ pip install -e .
 
 1. **Create a configuration** in your `pyproject.toml`:
 
-```toml
-[tool.ties]
-[[tool.ties.tie]]
-name = "gitignore sync"
-source = ".gitignore"
-target = "examples/.gitignore"
-```
+    ```toml
+    [tool.ties]
+    [[tool.ties.tie]]
+    name = "gitignore sync"
+    source = ".gitignore"
+    target = "examples/.gitignore"
+    ```
 
 2. **Check for discrepancies**:
 
-```bash
-ties check
-```
+    ```bash
+    ties check
+    ```
 
 3. **Fix discrepancies automatically**:
 
-```bash
-ties fix
-```
+    ```bash
+    ties fix
+    ```
 
 ## 📖 Advanced docs
 

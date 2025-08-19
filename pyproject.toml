@@ -32,7 +32,7 @@ dependencies = [ "toml", "typer" ]
 
 optional-dependencies.all = [ "pyyaml" ]
 optional-dependencies.yaml = [ "pyyaml" ]
-urls = { Homepage = "https://github.com/AlonKellner/ties.git", Repository = "https://github.com/AlonKellner/ties.git" }
+urls = { Homepage = "https://github.com/AlonKellner/ties.git", Repository = "https://github.com/AlonKellner/ties.git", Bugs = "https://github.com/AlonKellner/ties/issues", Changelog = "https://github.com/AlonKellner/ties/blob/main/CHANGELOG.md" }
 
 scripts.ties = "ties.cli:app"
 

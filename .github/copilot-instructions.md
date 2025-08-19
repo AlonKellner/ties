@@ -79,7 +79,7 @@ Before any Edit Attempt:
 - a descriptive line:
 
   ```text
-  `[EDIT]` `<goal>`, `<task>`, attempt #`<index>`: `STARTING`  
+  `[EDIT]` `<description>`: `STARTING`  
   ```
 
 After any Edit Attempt:  
@@ -87,67 +87,7 @@ After any Edit Attempt:
 - a summary line:
 
   ```text
-  `[EDIT]` `<goal>`, `<task>`, attempt #`<index>`: `<status>`  
+  `[EDIT]` `<description>`: `<status>`  
   ```
 
   where `<status>` is `SUCCESS` or `FAILED`
-
-## Tasks
-
-Each Task is a sequence of Edit Attempts.  
-A Task with a single `SUCCESS` is considered `DONE`.  
-When a Task is `DONE`, move on to the next Task.  
-After 3 `FAILED` Edit Attempts, the Task is considered `STUCK`.  
-
-Before any Task:  
-- a descriptive line:
-
-  ```text
-  `[TASK]` `<goal>`, `<task>`: `STARTING`  
-  ```
-
-After any Task:  
-- `git commit` your changes
-- a summary line:
-
-  ```text
-  `[TASK]` `<goal>`, `<task>`: `<status>` after `<amount>` attempts  
-  ```
-
-  where `<status>` is `DONE` or `STUCK`
-
-- `CHANGELOG.md` update if needed
-
-## Goals
-
-A Goal is a testable valuable feature that is achievable
-through a sequence of Tasks.  
-Tasks must include testing the feature.  
-Tasks may be changed, `CANCELED` or added when needed.  
-When all Tasks are `DONE` the Goal is `COMPLETED`.  
-You should address the user only if:
-1. A Goal was `COMPLETED`
-2. You are `STUCK`
-
-Before any Goal:
-- a descriptive line:
-
-  ```text
-  `[GOAL]` `<goal>`: `STARTING`  
-  ```
-
-After any `COMPLETED` Goal:
-- `git push` your changes
-- a summary paragraph:
-
-  ```text
-  `[GOAL]` `<goal>`: `COMPLETED`  
-  `<done-amount>` Tasks `DONE`  
-  `<canceled-amount>` Tasks `CANCELED`  
-  `<stuck-amount>` times `STUCK`  
-  `<concise-summary-of-the-process>`  
-  ```
-
-- add your summary paragraph to the `./agent-log/` folder as a new file called:
-
-  `<date-time:YYYYMMDD-hhmmss>-<name-of-code-assistant>-<goal>.md`

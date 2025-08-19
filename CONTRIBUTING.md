@@ -109,10 +109,10 @@ just --list
 
 ```bash
 # This runs everything on the current changes
-just pre-commit # or `just p`
+just pre-commit  # or `just p`
 
 # Run all pre-commit checks on all files
-just pre-commit-all # or `just pa`
+just pre-commit-all  # or `just pa`
 ```
 
 ## 🧪 Testing
@@ -121,7 +121,7 @@ just pre-commit-all # or `just pa`
 
 ```bash
 # Run all tests on all python versions and coverage on latest python
-just test
+just test  # or `just t`
 ```
 
 ### Test Structure
@@ -237,16 +237,14 @@ Closes #(issue number)
 
 ## 🏷️ Release Process
 
-1. **Update version** in `pyproject.toml`
-2. **Update CHANGELOG.md** with new changes
-3. **Create a release tag**
+1. **Update CHANGELOG.md** with new changes
+2. **Create a release tag**
 
    ```bash
-   git tag -a v1.0.0 -m "Release version 1.0.0"
-   git push origin v1.0.0
+   just bump minor  # or `just b minor`
    ```
 
-4. **GitHub Actions** will automatically build and publish to PyPI
+3. **GitHub Actions** will automatically build and publish to PyPI
 
 ## 🆘 Getting Help
 
